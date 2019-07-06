@@ -10,6 +10,8 @@ const NodeHelper = require('node_helper');
 const tradfriLib = require("node-tradfri-client");
 // for normal usage:
 const TradfriClient = tradfriLib.TradfriClient;
+const AccessoryTypes = tradfriLib.AccessoryTypes;
+const Accessory = tradfriLib.Accessory;
 // for discovery:
 const discoverGateway = tradfriLib.discoverGateway;
 const lightbulbs = {};
