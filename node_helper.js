@@ -38,7 +38,7 @@ module.exports = NodeHelper.create({
 					if(!(device.instanceId in lightbulbs)){
 						lightbulbs[device.instanceId] = device;
 						lightbulbs[device.instanceId].lightList[0].toggle();
-						self.sendNotification('REGISTER_BULB', device.instanceId);
+						self.sendSocketNotification('REGISTER_BULB', device.instanceId);
 					}}})
 			.observeDevices();
 			self.started = true;
