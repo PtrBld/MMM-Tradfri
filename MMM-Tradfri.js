@@ -18,15 +18,19 @@ Module.register('MMM-Tradfri',{
 			this.sendSocketNotification('TRADFRI_CONFIG', this.config)
 			return;
 		}
-		if(notification === "REGISTER_BULB"){
-			this.bulbs.push(payload);
-			return;
-		}
 		if(notification === "TOGGLE_BULB"){
 			this.sendSocketNotification('TOGGLE_BULB', payload)
 			return;
 		}
 	},
+
+	socketNotificationReceived: function(notification, payload){
+		if(notification === "REGISTER_BULB"){
+			this.bulbs.push(payload);
+			this.sendNotification("REGISTER_API", "TODO");
+			return;
+		}
+	}
 
 	getDom: function() {
         var wrapper = document.createElement("div");
