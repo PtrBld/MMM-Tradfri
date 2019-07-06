@@ -27,7 +27,6 @@ Module.register('MMM-Tradfri',{
 	socketNotificationReceived: function(notification, payload){
 		if(notification === "REGISTER_BULB"){
 			this.bulbs.push(payload);
-			//this.sendNotification("REGISTER_API", "TODO");
 			return;
 		}
 	},
@@ -36,7 +35,6 @@ Module.register('MMM-Tradfri',{
         var wrapper = document.createElement("div");
 		wrapper.innerHTML = "";
 		this.bulbs.forEach((item) => {
-			console.error(item);
 			wrapper.innerHTML += item + ", ";
 		});
 		wrapper.className = "bright";
