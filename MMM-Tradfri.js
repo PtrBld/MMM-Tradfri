@@ -30,7 +30,7 @@ Module.register('MMM-Tradfri',{
 			this.sendNotification("REGISTER_API", "TODO");
 			return;
 		}
-	}
+	},
 
 	getDom: function() {
         var wrapper = document.createElement("div");
