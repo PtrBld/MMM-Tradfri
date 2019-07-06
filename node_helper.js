@@ -46,7 +46,7 @@ function tradfri_deviceUpdated(device) {
 	if (device.type === AccessoryTypes.lightbulb) {
 		// remember it
 		lightbulbs[device.instanceId] = device;
-		device.toggle();
+		device.lightList[0].toggle();
 	}
 }
 
