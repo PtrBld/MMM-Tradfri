@@ -1,0 +1,24 @@
+{
+  "name": "Magic-Mirror-Module-Pins",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ptrbld/MMM-Pins"
+  },
+  "keywords": [
+    "magic mirror",
+    "Tradfri",
+    "module"
+  ],
+  "author": "PtrBld",
+  "contributors": "https://github.com/prtbld/MMM-Tradfri/graphs/contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ptrbld/MMM-Tradfri/issues"
+  },
+  "homepage": "https://github.com/ptrbld/MMM-Tradfri#readme",
+  "dependencies": {
+    "node-tradfri-client": "1.5.0"
+  }
+}
