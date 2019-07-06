@@ -22,6 +22,9 @@ module.exports = NodeHelper.create({
 
   socketNotificationReceived: async function(notification, payload) {
 	const self = this
+	if (notification === 'TOGGLE_BULB' && self.started === true) {
+		lightbulbs[payload].lightList[0].toggle();
+	}
     if (notification === 'TRADFRI_CONFIG' && self.started === false) {
 	  const result = await discoverGateway();
 	  if (result) {
@@ -30,9 +33,15 @@ module.exports = NodeHelper.create({
 			const {identity, psk} = await tradfri.authenticate(payload.securityCode);
 			console.error("" + identity + " : " +psk);
 			await tradfri.connect(identity, psk);
-			tradfri.on("device updated", tradfri_deviceUpdated)
-    		.on("device removed", tradfri_deviceRemoved)
-    		.observeDevices();
+			tradfri.on("device updated", (device) => {
+				if (device.type === AccessoryTypes.lightbulb) {
+					if(!(device.instanceId in lightbulbs)){
+						lightbulbs[device.instanceId] = device;
+						lightbulbs[payload].lightList[0].toggle();
+						self.sendNotification('REGISTER_BULB', device.instanceId);
+					}}})
+			.observeDevices();
+			self.started = true;
 		} catch (e) {
 			// handle error - see below for details
 			console.log("TRADFRI INIT FAILED");
@@ -41,15 +50,3 @@ module.exports = NodeHelper.create({
 	}
   }
 });
-  	
-function tradfri_deviceUpdated(device) {
-	if (device.type === AccessoryTypes.lightbulb) {
-		// remember it
-		lightbulbs[device.instanceId] = device;
-		device.lightList[0].toggle();
-	}
-}
-
-function tradfri_deviceRemoved(instanceId) {
-	// clean up
-}
