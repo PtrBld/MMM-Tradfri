@@ -28,6 +28,16 @@ Module.register('MMM-Tradfri',{
 		}
 	},
 
+	getDom: function() {
+        var wrapper = document.createElement("div");
+		wrapper.innerHTML = "";
+		this.bulbs.forEach((item) => {
+			wrapper.innerHTML += item + ", ";
+		});
+		wrapper.className = "bright";
+		return wrapper;
+    },
+
 	start: function() {
 		Log.info('Starting module: ' + this.name);
 		this.bulbs = [];

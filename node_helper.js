@@ -37,7 +37,7 @@ module.exports = NodeHelper.create({
 				if (device.type === AccessoryTypes.lightbulb) {
 					if(!(device.instanceId in lightbulbs)){
 						lightbulbs[device.instanceId] = device;
-						lightbulbs[payload].lightList[0].toggle();
+						lightbulbs[device.instanceId].lightList[0].toggle();
 						self.sendNotification('REGISTER_BULB', device.instanceId);
 					}}})
 			.observeDevices();
