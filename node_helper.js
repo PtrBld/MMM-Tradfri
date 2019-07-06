@@ -7,7 +7,11 @@
  */
 
 const NodeHelper = require('node_helper');
-import { discoverGateway, TradfriClient, Accessory, AccessoryTypes } from "node-tradfri-client";
+const tradfriLib = require("node-tradfri-client");
+// for normal usage:
+const TradfriClient = tradfriLib.TradfriClient;
+// for discovery:
+const discoverGateway = tradfriLib.discoverGateway;
 const lightbulbs = {};
 module.exports = NodeHelper.create({
   start: function () {
