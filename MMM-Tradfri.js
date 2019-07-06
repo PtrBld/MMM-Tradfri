@@ -27,7 +27,7 @@ Module.register('MMM-Tradfri',{
 	socketNotificationReceived: function(notification, payload){
 		if(notification === "REGISTER_BULB"){
 			this.bulbs.push(payload);
-			this.sendNotification("REGISTER_API", "TODO");
+			//this.sendNotification("REGISTER_API", "TODO");
 			return;
 		}
 	},
